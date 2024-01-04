@@ -3,7 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const postcssNormalize = require('postcss-normalize')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const postcssConfig = {
   loader: 'postcss-loader',
@@ -29,6 +30,9 @@ module.exports = (env) => {
       path: path.resolve(__dirname, 'dist'),
       clean: true,
     },
+    optimization: {
+      minimize: false,
+    },
     plugins: [
       new MiniCssExtractPlugin(),
       new ReactRefreshWebpackPlugin(),
@@ -36,7 +40,7 @@ module.exports = (env) => {
         template: './public/index.html',
         filename: 'index.html',
       }),
-      new BundleAnalyzerPlugin()
+      // new BundleAnalyzerPlugin()
     ],
     devServer: {
       static: {
